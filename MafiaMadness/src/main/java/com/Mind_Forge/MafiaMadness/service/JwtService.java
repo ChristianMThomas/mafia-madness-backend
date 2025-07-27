@@ -19,7 +19,7 @@ import io.jsonwebtoken.security.Keys;
 public class JwtService {
 
     // Retrieves our secret key
-    @Value("${security.jwt.secret-key")
+    @Value("${security.jwt.secret-key}")
     private String secretKey;
 
     // Retrieves our set ExperationTime
@@ -66,7 +66,7 @@ public class JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getSignInKey(), SignatureAlgorithm.ES256)
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
